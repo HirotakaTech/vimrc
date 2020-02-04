@@ -1,5 +1,6 @@
 let mapleader =","
 
+" DOWNLOAD DEI PLUGINS
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
 	silent !mkdir -p ~/.config/nvim/autoload/
@@ -7,9 +8,12 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall
 endif
 
+"__________________________________________________________________PLUGINS_____________________________________
+
 call plug#begin('~/.config/nvim/plugged')
 	Plug 'tpope/vim-surround'
 	Plug 'scrooloose/nerdtree'
+	Plug 'tpope/vim-fugitive'
 	Plug 'junegunn/goyo.vim'
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	Plug 'vimwiki/vimwiki'
@@ -21,19 +25,20 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'kovetskiy/sxhkd-vim'
 	Plug 'dense-analysis/ale'
 	Plug 'jiangmiao/auto-pairs'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'honza/vim-snippets'
 	Plug 'mhartington/oceanic-next'
+	Plug 'SirVer/ultisnips'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'morhetz/gruvbox'
+	Plug 'AndrewRadev/linediff.vim'
 call plug#end()
 
+
 set termguicolors
+"Impostazione dell'encoding
 set fileencodings=iso-88591
-colorscheme OceanicNext
-set bg=dark
-set go=a
-set mouse=a
-set nohlsearch
-set clipboard+=unnamedplus
+color gruvbox
+
 
 " Some basics:
 	nnoremap c "_c
@@ -41,6 +46,12 @@ set clipboard+=unnamedplus
 	filetype plugin on
 	syntax on
 	set number relativenumber
+	set bg=dark
+	set go=a
+	set ma
+	set mouse=a
+	set nohlsearch
+	set clipboard+=unnamedplus
 " Enable autocompletion:
 	set wildmode=longest,list,full
 " Disables automatic commenting on newline:
@@ -108,23 +119,23 @@ autocmd VimEnter * command! -nargs=* Rg
   \   <bang>0)
 
 " Folding and unfolding
-	nnoremap f :set foldmethod=indent<cr>zM<cr>
-	nnoremap F :set foldmethod=manual<cr>zR<cr>
+	" nnoremap f :set foldmethod=indent<cr>zM<cr>
+	" nnoremap F :set foldmethod=manual<cr>zR<cr>
 
 "Copia con Y
 	noremap Y y$
 
 "Formattazione
-	vmap Q gq
-	nmap Q gqap
+	" vmap Q gq
+	" nmap Q gqap
 
 "Indentazione migliore
 	vnoremap < <gv
 	vnoremap > >gv
 
 "Tab
-	nnoremap tn :tabnew<Space>
-	nnoremap tk :tabnext<CR>
+	nnoremap tk :tabnew<Space>
+	nnoremap tn :tabnext<CR>
 	nnoremap tj :tabprev<CR>
 
 
@@ -134,7 +145,6 @@ autocmd VimEnter * command! -nargs=* Rg
 
 "Salvare
 	nnoremap <leader>, :w!<CR>
-	inoremap <leader>, :w!<CR>
 	vnoremap <leader>, :w!<CR>
 
 "Uscire
@@ -156,15 +166,15 @@ autocmd VimEnter * command! -nargs=* Rg
 "COC VIM-----------------
 
 " Use tab for trigger completion with characters ahead and navigate.
-	" inoremap <silent><expr> <TAB>
-	"       \ pumvisible() ? "\<C-n>" :
-	"       \ <SID>check_back_space() ? "\<TAB>" :
-	"       \ coc#refresh()
-	" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-	" function! s:check_back_space() abort
-	"   let col = col('.') - 1
-	"   return !col || getline('.')[col - 1]  =~# '\s'
-	" endfunction
+	inoremap <silent><expr> <TAB>
+	      \ pumvisible() ? "\<C-n>" :
+	      \ <SID>check_back_space() ? "\<TAB>" :
+	      \ coc#refresh()
+	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+	function! s:check_back_space() abort
+	  let col = col('.') - 1
+	  return !col || getline('.')[col - 1]  =~# '\s'
+	endfunction
 	inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -184,3 +194,22 @@ let g:coc_snippet_next = '<tab>'
 " Some servers have issues with backup files, see #649
 	set nobackup
 	set nowritebackup
+
+
+" Ultisnips
+"let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+
+" Vim Fugitive
+nmap <space>s :Gstatus<cr>
+nmap <space>c :Gcommit -v<cr>
+nmap <space>a :Git add -p<cr>
+nmap <space>p :Gpush<cr>
+nmap <space>P :Gpull<cr>
+nmap <space>gd :Gdiff<cr>
+nmap <space>gw :Gwrite<cr>
+
+
+
