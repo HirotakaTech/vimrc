@@ -1,3 +1,4 @@
+let mapleader = ","
 " VIM PLUG
 	call plug#begin('~/.vim/plugged')
 		Plug 'tpope/vim-fugitive'
@@ -134,8 +135,10 @@ let g:coc_global_extensions = [
 	nmap <Insert> <Plug>(coc-rename)
 
 " Remap for format selected region
-	xmap <leader>f  <Plug>(coc-format-selected)
-	nmap <leader>f  <Plug>(coc-format-selected)
+	"xmap <leader>f  <Plug>(coc-format-selected)
+	"nmap <leader>f  <Plug>(coc-format-selected)
+	xmap <leader>f  :CocCommand prettier.formatFile<cr>
+	nmap <leader>f  :CocCommand prettier.formatFile<cr>
 
 	augroup mygroup
 	  autocmd!
