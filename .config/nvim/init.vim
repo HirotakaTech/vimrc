@@ -2,14 +2,13 @@ let mapleader = ","
 " VIM PLUG
 	call plug#begin('~/.vim/plugged')
 		Plug 'tpope/vim-fugitive'
-		Plug 'dense-analysis/ale'
 		Plug 'neoclide/coc.nvim', {'branch': 'release'}
 		Plug 'preservim/nerdtree'
 		Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 		Plug 'junegunn/fzf.vim'
 		Plug 'grvcoelho/vim-javascript-snippets'
 		Plug 'christoomey/vim-tmux-navigator'
-		Plug 'morhetz/gruvbox'
+    Plug 'dracula/vim', { 'as': 'dracula' }
 	call plug#end()
 
 "Impostazioni varie
@@ -20,7 +19,7 @@ let mapleader = ","
 	set completeopt=longest,menuone
 
 " Colori
-	color gruvbox
+	color dracula
 	"colorscheme onehalfdark
 
 " Inserisci numeri di riga
@@ -72,6 +71,7 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-eslint', 
   \ 'coc-prettier', 
+  \ 'coc-java', 
   \ 'coc-json', 
   \ ]
 " from readme
