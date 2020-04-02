@@ -91,7 +91,8 @@ fi
 alias cfv='nvim ~/.config/nvim/init.vim'
 alias vim='nvim'
 alias cfx='nvim ~/.Xresources'
-alias lab='cd ~/documenti/eclipse/lab-asd/ && nvim Main.java'
+alias cb='nvim ~/.bashrc'
+alias lab="cd ~/documenti/eclipse/ && tmux"
 alias r='ranger'
 
 # Alias definitions.

@@ -201,3 +201,6 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 	noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 	noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
+" Compilazione di java
+  map <space>e :set makeprg=javac\ %<CR>:make<CR>
+  map <space>r :!echo %\|awk -F. '{print $1}'\|xargs java<CR>
