@@ -9,6 +9,8 @@ let mapleader = ","
 		Plug 'grvcoelho/vim-javascript-snippets'
 		Plug 'christoomey/vim-tmux-navigator'
     Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'unblevable/quick-scope'
+    Plug 'chrisbra/Colorizer'
 	call plug#end()
 
 "Impostazioni varie
@@ -204,3 +206,11 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Compilazione di java
   map <space>e :set makeprg=javac\ %<CR>:make<CR>
   map <space>r :!echo %\|awk -F. '{print $1}'\|xargs java<CR>
+
+" Quick scope
+  let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+  let g:qs_highlight_on_keys = ['f', 'F']
+
+  highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+  highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
