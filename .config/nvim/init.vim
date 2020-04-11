@@ -11,6 +11,8 @@ let mapleader = ","
     Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'unblevable/quick-scope'
     Plug 'chrisbra/Colorizer'
+    Plug 'junegunn/limelight.vim'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 	call plug#end()
 
 "Impostazioni varie
@@ -26,6 +28,7 @@ let mapleader = ","
 
 " Inserisci numeri di riga
 	se nu
+  set noswapfile
 
 	set smarttab
 	set cindent
