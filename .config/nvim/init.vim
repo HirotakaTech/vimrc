@@ -16,6 +16,7 @@ let mapleader = ","
  "     \/   |_|_| |_| |_| | .__/|_|\__,_|\__, |
  "                        | |             __/ |
  "                        |_|            |___/ 
+ "
 	call plug#begin('~/.vim/plugged')
         Plug 'tpope/vim-fugitive'
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -30,6 +31,7 @@ let mapleader = ","
         Plug 'ludovicchabant/vim-gutentags'
         Plug 'tpope/vim-commentary'
 	call plug#end()
+" =============================================================================
 
   " _                    
  " | |                   
@@ -40,6 +42,7 @@ let mapleader = ","
 
     se nu
     set noswapfile
+    set cc=80 "riga di colonna
 
     set smarttab
     set cindent
@@ -52,6 +55,7 @@ let mapleader = ","
 " Opzione per le jsp
 	autocmd FileType jsp :syntax sync fromstart
 
+" =============================================================================
 
              " _                                  _      _   _             
             " | |                                | |    | | (_)            
@@ -85,6 +89,7 @@ let mapleader = ","
     noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
     noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
+" =============================================================================
 
   " __      __ 
  " / _|    / _|
@@ -92,6 +97,7 @@ let mapleader = ","
 " |  _|_  /  _|
 " | |  / /| |  
 " |_| /___|_|  
+"
 
 	autocmd VimEnter * command! -nargs=* Rg
 	  \ call fzf#vim#grep(
@@ -100,11 +106,13 @@ let mapleader = ","
 	  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
 	  \   <bang>0)
 
-"FZF mapping
+    "FZF mapping
     nnoremap <C-f> :Files<Enter>
-"RipGrep
+    "RipGrep
     nnoremap <leader>a :Rg<space>
     nnoremap <C-A> :exec "Rg ".expand("<cword>")<cr>
+
+" =============================================================================
 
   " __             _ _   _           
  " / _|           (_) | (_)          
@@ -114,6 +122,7 @@ let mapleader = ","
 " |_|  \__,_|\__, |_|\__|_| \_/ \___|
   "           __/ |                  
   "          |___/                   
+  "
     nmap <space>s :Gstatus<cr>
     nmap <space>c :Gcommit -v<cr>
     nmap <space>a :Git add -p<cr>
@@ -123,6 +132,7 @@ let mapleader = ","
     nmap <space>gw :Gwrite<cr>
 
 
+" =============================================================================
 
              " _      _                             
             " (_)    | |                            
@@ -132,11 +142,13 @@ let mapleader = ","
  " \__, |\__,_|_|\___|_|\_\___/\___\___/| .__/ \___|
     " | |                               | |         
     " |_|                               |_|         
-  let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-  let g:qs_highlight_on_keys = ['f', 'F']
-  highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-  highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+    "
+    let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+    let g:qs_highlight_on_keys = ['f', 'F']
+    highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+    highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 
+" =============================================================================
 
    " _                  
   " (_)                 
@@ -146,5 +158,8 @@ let mapleader = ","
   " | |\__,_| \_/ \__,_|
  " _/ |                 
 " |__/                  
-  map <space>e :set makeprg=javac\ %<CR>:make<CR>
-  map <space>r :!echo %\|awk -F. '{print $1}'\|xargs java<CR>
+"
+    map <space>e :set makeprg=javac\ %<CR>:make<CR>
+    map <space>r :!echo %\|awk -F. '{print $1}'\|xargs java<CR>
+    
+" =============================================================================
