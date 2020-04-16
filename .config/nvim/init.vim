@@ -1,22 +1,29 @@
 let mapleader = ","
 " VIM PLUG
 	call plug#begin('~/.vim/plugged')
-		Plug 'tpope/vim-fugitive'
-		Plug 'preservim/nerdtree'
-		Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-		Plug 'junegunn/fzf.vim'
-		Plug 'grvcoelho/vim-javascript-snippets'
-		Plug 'christoomey/vim-tmux-navigator'
-    Plug 'dracula/vim', { 'as': 'dracula' }
-    Plug 'unblevable/quick-scope'
-    Plug 'chrisbra/Colorizer'
-    Plug 'junegunn/limelight.vim'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+        Plug 'tpope/vim-fugitive'
+        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+        Plug 'junegunn/fzf.vim'
+        Plug 'christoomey/vim-tmux-navigator'
+        Plug 'dracula/vim', { 'as': 'dracula' }
+        Plug 'unblevable/quick-scope'
+        Plug 'chrisbra/Colorizer'
+        Plug 'junegunn/limelight.vim'
+        Plug 'lifepillar/vim-mucomplete'
+        Plug 'dmerejkowsky/vim-ale'
+        Plug 'ludovicchabant/vim-gutentags'
 	call plug#end()
 
 "Impostazioni varie
+  "autocompletazione
+   set completeopt+=menuone
+   set completeopt+=noselect
+   set shortmess+=c   " Shut off completion messages
+
+
 	"set fileencodings=iso-88591
-	set clipboard+=unnamedplus
+    set clipboard^=unnamed,unnamedplus
+
 
 " Menu di autocompletazione
 	set completeopt=longest,menuone
@@ -31,8 +38,8 @@ let mapleader = ","
 
 	set smarttab
 	set cindent
-	set tabstop=2
-	set shiftwidth=2
+	set tabstop=4
+	set shiftwidth=4
 	" always uses spaces instead of tab characters
 	set expandtab
 
@@ -47,10 +54,6 @@ let mapleader = ","
 " prettier command for coc
 	"command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-" Mappings
-	"Nerd Tree
-		map <C-n> :NERDTreeToggle<CR>
-		let g:NERDTreeIgnore = ['^node_modules$']
 	"RipGrep
 		nnoremap <leader>a :Rg<space>
 		nnoremap <C-A> :exec "Rg ".expand("<cword>")<cr>
