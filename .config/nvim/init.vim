@@ -30,6 +30,9 @@ let mapleader = ","
         Plug 'dmerejkowsky/vim-ale'
         Plug 'ludovicchabant/vim-gutentags'
         Plug 'tpope/vim-commentary'
+        Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 	call plug#end()
 " =============================================================================
 
