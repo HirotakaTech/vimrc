@@ -43,6 +43,12 @@ let mapleader = ","
  " | |_) | (_| \__ \  __/
  " |_.__/ \__,_|___/\___|
 
+    " Uscire dalle modalita' ctrl+c
+    nmap <c-c> <esc>
+    imap <c-c> <esc>
+    vmap <c-c> <esc>
+    omap <c-c> <esc>
+
     se nu
     set noswapfile
     set cc=80 "riga di colonna
@@ -166,3 +172,8 @@ let mapleader = ","
     map <space>r :!echo %\|awk -F. '{print $1}'\|xargs java<CR>
     
 " =============================================================================
+
+" when running at every change you may want to disable quickfix
+let g:prettier#quickfix_enabled = 0
+
+autocmd TextChanged,InsertLeave *.java,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync

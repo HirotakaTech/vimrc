@@ -1,5 +1,5 @@
 #/bin/bash
-sudo apt install -y fd-find fzf tree exuberant-ctags
+sudo apt install -y fd-find fzf tree exuberant-ctags ripgrep
 mkdir -p ~/.config/nvim
 mkdir -p ~/.config/alacritty
 cp ./.config/nvim/init.vim ~/.config/nvim/init.vim
