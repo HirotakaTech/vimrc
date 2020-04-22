@@ -43,26 +43,77 @@ let mapleader = ","
  " | |_) | (_| \__ \  __/
  " |_.__/ \__,_|___/\___|
 
-    " Uscire dalle modalita' ctrl+c
-    nmap <c-c> <esc>
-    imap <c-c> <esc>
-    vmap <c-c> <esc>
-    omap <c-c> <esc>
-
     se nu
     set noswapfile
     set cc=80 "riga di colonna
 
+    set autoindent
     set smarttab
     set cindent
-    set tabstop=4
+    set tabstop=8
     set shiftwidth=4
+    set softtabstop=4
+    set expandtab
+    set wrap
+    set textwidth=80
     " always uses spaces instead of tab characters
     set expandtab
-" Colori
-	color dracula
-" Opzione per le jsp
-	autocmd FileType jsp :syntax sync fromstart
+
+    " Colori
+    color dracula
+
+    " Opzione per le jsp
+    autocmd FileType jsp :syntax sync fromstart
+
+    " Save when losing focus
+    au FocusLost * :silent! wall
+
+    " Resize splits when the window is resized
+    au VimResized * :wincmd =
+    " Make sure Vim returns to the same line when you reopen a file.
+    augroup line_return
+        au!
+        au BufReadPost *
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \     execute 'normal! g`"zvzz' |
+            \ endif
+    augroup END
+
+    " Use sane regexes.
+    nnoremap / /\v
+    vnoremap / /\v
+
+    " Line match with tab
+    map <tab> %
+
+    " Keep search matches in the middle of the window.
+    nnoremap n nzzzv
+    nnoremap N Nzzzv
+
+    " Space to toggle folds.
+    nnoremap <Space> za
+    vnoremap <Space> za
+
+    " Window resize
+    nnoremap <m-right> :vertical resize +3<cr>
+    nnoremap <m-left> :vertical resize -3<cr>
+    nnoremap <m-up> :resize +3<cr>
+    nnoremap <m-down> :resize -3<cr>
+
+    " Formatting, TextMate-style
+    nnoremap Q gqip
+    vnoremap Q gq
+    
+    " Select (charwise) the contents of the current line, excluding indentation.
+    " Great for pasting Python lines into REPLs.
+    nnoremap vv ^vg_
+    
+    "white space
+    augroup trailing
+        au!
+        au InsertEnter * :set listchars-=trail:⌴
+        au InsertLeave * :set listchars+=trail:⌴
+    augroup END
 
 " =============================================================================
 
@@ -118,8 +169,8 @@ let mapleader = ","
     "FZF mapping
     nnoremap <C-f> :Files<Enter>
     "RipGrep
-    nnoremap <leader>a :Rg<space>
-    nnoremap <C-A> :exec "Rg ".expand("<cword>")<cr>
+    nnoremap <C-A> :Rg<space>
+    "nnoremap <C-A> :exec "Rg ".expand("<cword>")<cr>
 
 " =============================================================================
 

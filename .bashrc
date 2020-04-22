@@ -90,6 +90,7 @@ fi
 # some more ls aliases
 alias cfv='nvim ~/.config/nvim/init.vim'
 alias vim='nvim'
+alias v='nvim'
 alias cfx='nvim ~/.Xresources'
 alias cb='nvim ~/.bashrc'
 alias lab="cd ~/documenti/eclipse/ && tmux"
