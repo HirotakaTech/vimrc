@@ -96,6 +96,8 @@ alias cb='nvim ~/.bashrc'
 alias lab="cd ~/documenti/eclipse/ && tmux"
 alias r='ranger'
 alias fd=fdfind
+alias d='sudo docker run -p 8080:8080 -v ~/documenti/lavoro/network/:/usr/local/tomcat/webapps/ hirotaka00/tomcat-server:v1'
+
 
 bind '"\C-f":"cd_with_fzf\n"'
 bind '"\C-o":"open_with_fzf\n"'
