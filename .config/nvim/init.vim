@@ -27,6 +27,7 @@ let mapleader = ","
             Plug 'unblevable/quick-scope'
             Plug 'chrisbra/Colorizer'
             Plug 'junegunn/limelight.vim'
+            Plug 'morhetz/gruvbox'
             Plug 'kylelaker/riscv.vim'
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
             Plug 'tpope/vim-commentary'
@@ -61,7 +62,8 @@ let mapleader = ","
     set expandtab
 
     " Colori
-    color dracula
+    " color dracula
+    color gruvbox
 
     " Opzione per le jsp
     autocmd FileType jsp :syntax sync fromstart
@@ -299,3 +301,6 @@ command! -nargs=0 Format :call CocAction('format')
 
 "Chiave api per pastery
 let g:pastery_apikey = "Vp8e6egMu9xTQviUDnDQSbP6CT33WXaz"
+
+
+map <space>r :w<cr>:!java %<cr>
