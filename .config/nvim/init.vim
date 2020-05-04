@@ -139,11 +139,12 @@ let mapleader = ","
     set completeopt=longest,menuone
 
     "set fileencodings=iso-88591
-    set clipboard^=unnamed,unnamedplus
+    set clipboard=unnamedplus
 
     " if hidden is not set, TextEdit might fail.
     set hidden
     set updatetime=300
+    set mouse=a
 
     " don't give |ins-completion-menu| messages.
     set shortmess+=c
@@ -306,3 +307,6 @@ let g:pastery_apikey = "Vp8e6egMu9xTQviUDnDQSbP6CT33WXaz"
 
 
 map <space>r :w<cr>:!java %<cr>
+
+nnoremap <space><space> :bnext<CR>
+nnoremap <S-space> :bprevious<CR>
