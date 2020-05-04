@@ -31,6 +31,8 @@ let mapleader = ","
             Plug 'kylelaker/riscv.vim'
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
             Plug 'tpope/vim-commentary'
+            Plug 'itchyny/lightline.vim'
+
 	call plug#end()
 " =============================================================================
 

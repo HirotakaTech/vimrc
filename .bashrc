@@ -16,7 +16,7 @@ bind '"\C-o":"open_with_fzf\n"'
 
 #Funzioni utilissime
 open_with_fzf() {
-    fd -t f -H -I | fzf -m --preview="xdg-mime query default {}" | xargs -ro -d "\n" xdg-open 2>&-
+    cd $HOME && fzf | xargs nvim
 }
 cd_with_fzf() {
     cd $HOME && cd "$(fd -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" )"
