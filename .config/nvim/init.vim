@@ -32,6 +32,7 @@ let mapleader = ","
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
             Plug 'tpope/vim-commentary'
             Plug 'itchyny/lightline.vim'
+            Plug 'junegunn/goyo.vim'
 
 	call plug#end()
 " =============================================================================
@@ -144,7 +145,6 @@ let mapleader = ","
     " if hidden is not set, TextEdit might fail.
     set hidden
     set updatetime=300
-    set mouse=a
 
     " don't give |ins-completion-menu| messages.
     set shortmess+=c
@@ -197,7 +197,7 @@ let mapleader = ","
   "           __/ |
   "          |___/
   "
-    nmap <leader>s :Gstatus<cr>
+    nmap <leader>s :Git<cr>
     nmap <leader>c :Gcommit -v<cr>
     nmap <leader>a :Git add -p<cr>
     nmap <leader>p :Gpush<cr>
@@ -310,3 +310,5 @@ map <space>r :w<cr>:!java %<cr>
 
 nnoremap <space><space> :bnext<CR>
 nnoremap <S-space> :bprevious<CR>
+
+tnoremap <Esc> <C-\><C-n>
