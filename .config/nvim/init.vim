@@ -312,3 +312,7 @@ nnoremap <space><space> :bnext<CR>
 nnoremap <S-space> :bprevious<CR>
 
 tnoremap <Esc> <C-\><C-n>
+
+
+"Copia roba con wl-clipboard
+map <C-p> "+P
