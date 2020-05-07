@@ -17,6 +17,14 @@ let mapleader = ","
  "                        | |             __/ |
  "                        |_|            |___/
  "
+ " Auto installa vim plug
+ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
+	echo "Downloading junegunn/vim-plug to manage plugins..."
+	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
+	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
+	autocmd VimEnter * PlugInstall
+endif
+
 	call plug#begin('~/.vim/plugged')
             Plug 'tpope/vim-fugitive'
             Plug 'skorokithakis/pastery.vim'
@@ -32,7 +40,6 @@ let mapleader = ","
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
             Plug 'tpope/vim-commentary'
             Plug 'itchyny/lightline.vim'
-            Plug 'junegunn/goyo.vim'
 
 	call plug#end()
 " =============================================================================
@@ -49,6 +56,8 @@ let mapleader = ","
     set noswapfile
     set cc=80 "riga di colonna
 
+" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
+    set splitbelow splitright
 
     set termguicolors
 
