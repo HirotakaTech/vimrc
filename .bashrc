@@ -1,6 +1,7 @@
 
 # some more ls aliases
 alias cfv='nvim ~/.config/nvim/init.vim'
+alias cfb='nvim ~/.bashrc'
 alias vim='nvim'
 alias v='nvim'
 alias cfx='nvim ~/.Xresources'
