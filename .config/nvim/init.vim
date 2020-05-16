@@ -325,3 +325,9 @@ tnoremap <Esc> <C-\><C-n>
 
 "Copia roba con wl-clipboard
 map <C-p> "+P
+
+map <space>t :botright vertical terminal<cr>
+
+" Emoji 😄
+set noemoji
+map <space>e :terminal ~/.config/nvim/emoji.sh<cr>I
