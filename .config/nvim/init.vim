@@ -27,6 +27,7 @@ endif
 
 	call plug#begin('~/.vim/plugged')
             Plug 'tpope/vim-fugitive'
+            Plug 'AndrewRadev/linediff.vim'
             Plug 'skorokithakis/pastery.vim'
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'
@@ -208,11 +209,10 @@ endif
   "
     nmap <leader>s :Git<cr>
     nmap <leader>c :Gcommit -v<cr>
-    nmap <leader>a :Git add -p<cr>
     nmap <leader>p :Gpush<cr>
     nmap <leader>P :Gpull<cr>
-    nmap <leader>gd :Gdiff<cr>
-    nmap <leader>gw :Gwrite<cr>
+    nmap <leader>a :diffget //2<cr>
+    nmap <leader>l :diffget //3<cr>
 
 
 " =============================================================================
