@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/sh
 
-cat ~/emoji | fzf | awk '{print $1}' | wl-copy
+fzf < ~/.config/nvim/emoji | awk '{print $1}' | wl-copy
