@@ -27,16 +27,19 @@ endif
 
 	call plug#begin('~/.vim/plugged')
             Plug 'tpope/vim-fugitive'
+            Plug 'ThePrimeagen/vim-be-good'
             Plug 'AndrewRadev/linediff.vim'
             Plug 'skorokithakis/pastery.vim'
             Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             Plug 'junegunn/fzf.vim'
+            Plug 'habamax/vim-asciidoctor'
             Plug 'christoomey/vim-tmux-navigator'
             Plug 'dracula/vim', { 'as': 'dracula' }
             Plug 'unblevable/quick-scope'
             Plug 'chrisbra/Colorizer'
             Plug 'junegunn/limelight.vim'
             Plug 'morhetz/gruvbox'
+            Plug 'liuchengxu/vista.vim'
             Plug 'kylelaker/riscv.vim'
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
             Plug 'tpope/vim-commentary'
@@ -75,7 +78,6 @@ endif
     set expandtab
 
     " Colori
-    " color dracula
     color gruvbox
 
     " Opzione per le jsp
@@ -252,82 +254,101 @@ endif
 "COC
 "
 " Give more space for displaying messages.
-set cmdheight=2
+    set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+    set updatetime=300
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    inoremap <silent><expr> <TAB>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<TAB>" :
+          \ coc#refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+    inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+    if exists('*complete_info')
+      inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+    else
+      imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    endif
 
 " Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+    nmap <silent> [g <Plug>(coc-diagnostic-prev)
+    nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+    nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+    function! s:show_documentation()
+      if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+      else
+        call CocAction('doHover')
+      endif
+    endfunction
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+    nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+    xmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>f  <Plug>(coc-format-selected)
 
 " Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
+    command! -nargs=0 Format :call CocAction('format')
 
 "Chiave api per pastery
-let g:pastery_apikey = "Vp8e6egMu9xTQviUDnDQSbP6CT33WXaz"
+    let g:pastery_apikey = "Vp8e6egMu9xTQviUDnDQSbP6CT33WXaz"
 
 
-map <space>r :w<cr>:!java %<cr>
+    map <space>r :w<cr>:!java %<cr>
 
-nnoremap <space><space> :bnext<CR>
-nnoremap <S-space> :bprevious<CR>
+    nnoremap <space><space> :bnext<CR>
+    nnoremap <S-space> :bprevious<CR>
 
-tnoremap <Esc> <C-\><C-n>
+    tnoremap <Esc> <C-\><C-n>
 
 
 "Copia roba con wl-clipboard
-map <C-p> "+P
+    map <C-p> "+P
 
-map <space>t :botright vertical terminal<cr>
+    map <space>t :botright vertical terminal<cr>
 
 " Emoji 😄
-set noemoji
-map <space>e :terminal ~/.config/nvim/emoji.sh<cr>I
+    set noemoji
+    map <space>e :terminal ~/.config/nvim/emoji.sh<cr>I
+
+
+" Asciidoc
+    augroup ON_ASCIIDOCTOR_SAVE | au!
+        au BufWritePost *.adoc :Asciidoctor2PDF
+    augroup end
+
+" Vista vim
+    function! NearestMethodOrFunction() abort
+      return get(b:, 'vista_nearest_method_or_function', '')
+    endfunction
+
+    set statusline+=%{NearestMethodOrFunction()}
+
+    " By default vista.vim never run if you don't call it explicitly.
+    autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+    let g:vista_fzf_preview = ['right:50%']
+
+    map <space>j :Vista coc<cr>
